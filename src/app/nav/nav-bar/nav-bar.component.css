@@ -1,0 +1,10 @@
+.nav.navbar-nav{
+    font-size: 15px;
+    font-style: italic;
+}
+
+#searchForm{
+    margin-right: 100px;
+}
+
+@media(max-width:1200px) {#searchForm{display: none;}}
