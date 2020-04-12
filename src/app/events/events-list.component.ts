@@ -9,6 +9,9 @@ import { Component } from '@angular/core';
 )
 export class EventsListComponent
 {
+
+    
+
     event = {
         id:1,
         name : 'Angular Connect',
