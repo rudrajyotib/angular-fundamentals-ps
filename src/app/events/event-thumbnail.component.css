@@ -1,5 +1,5 @@
 .pad-left{
-    padding-left: 50px;
+    padding-left: 10px;
 }
 
 .well div{
@@ -7,5 +7,14 @@
 }
 
 .thumbnail{
-    min-height: 220px;
+    min-height: 240px;
+}
+
+.green{
+    color:chartreuse !important;
+    font-weight: bold;
+}
+
+.orange{
+    color: orange !important;
 }
