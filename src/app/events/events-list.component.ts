@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../shared/event.service';
-
+import { ToastrService } from '../common/toastr.service';
 
 @Component(
     {
@@ -13,7 +13,8 @@ export class EventsListComponent implements OnInit
 
     events : any;
 
-    constructor(private eventService : EventService)
+    constructor(private eventService : EventService,
+        private toastrService : ToastrService)
     {
 
     }
@@ -23,6 +24,10 @@ export class EventsListComponent implements OnInit
         this.events = this.eventService.getEvents();
     }
     
-
+    handleThumbnailClick(eventName : string)
+    {
+        console.log('entering event '+eventName);
+        this.toastrService.success(eventName,'Angular events');
+    }
     
 }
