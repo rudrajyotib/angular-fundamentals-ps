@@ -5,3 +5,7 @@
 .well div{
     color : lightblue
 }
+
+.thumbnail{
+    min-height: 220px;
+}
