@@ -24,10 +24,10 @@ export class EventsListComponent implements OnInit
         this.events = this.eventService.getEvents();
     }
     
-    handleThumbnailClick(eventName : string)
+    handleThumbnailClick(eventId : string, eventName:string)
     {
-        console.log('entering event '+eventName);
-        this.toastrService.success(eventName,'Angular events');
+        console.log('entering event '+eventId);
+        this.toastrService.success(eventName,'Entering event');
     }
     
 }
