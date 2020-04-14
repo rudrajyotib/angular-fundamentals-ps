@@ -21,13 +21,13 @@ export class ValidEventIdGuard implements CanActivate {
     let id = Number(next.paramMap.get('id'));
     if (id === NaN)
     {
-      this.routerService.navigate(['/events']);
+      this.routerService.navigate(['/eventNotFound']);
       return false;
     }
     let eventIndex : number = this.eventService.getEvents().findIndex(event => event.id === id)
       if (eventIndex === -1)
       {
-        this.routerService.navigate(['/events']);
+        this.routerService.navigate(['/eventNotFound']);
         return false;
       }
       return true;

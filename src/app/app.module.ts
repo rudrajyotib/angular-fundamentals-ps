@@ -8,10 +8,12 @@ import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { ValidEventIdGuard } from './events/guard/valid-event-id.guard';
+import { EventNotFoundComponent } from './errors/event-not-found.component';
 
 const routes: Routes = [
   { path: 'events', component: EventsListComponent },
   { path: 'events/:id', canActivate: [ValidEventIdGuard], component:EventDetailsComponent },
+  {path:'eventNotFound', component : EventNotFoundComponent},
   { path: '**', redirectTo: 'events', pathMatch: 'full' }
 ];
 
@@ -22,7 +24,8 @@ const routes: Routes = [
     EventsListComponent,
     EventThumbnailComponent,
     NavBarComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    EventNotFoundComponent
   ],
   imports: [
     BrowserModule,
