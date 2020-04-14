@@ -16,4 +16,9 @@ export class ToastrService {
     toastr.success(message, title);
   }
 
+  error(message:string, title: string)
+  {
+    toastr.error(message, title);
+  }
+
 }

@@ -7,10 +7,11 @@ import { EventsListComponent } from './events/events-list.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { ValidEventIdGuard } from './events/guard/valid-event-id.guard';
 
 const routes: Routes = [
   { path: 'events', component: EventsListComponent },
-  { path: 'events/:id', component:EventDetailsComponent },
+  { path: 'events/:id', canActivate: [ValidEventIdGuard], component:EventDetailsComponent },
   { path: '**', redirectTo: 'events', pathMatch: 'full' }
 ];
 
