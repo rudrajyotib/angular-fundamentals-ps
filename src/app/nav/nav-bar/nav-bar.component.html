@@ -23,13 +23,14 @@
             </ul>
           </li>
           <li>
-            <a [routerLink]="['/user']" routerLinkActive = "activeUser">Profile</a>
+            <a [routerLink]="['/user/profile']" [routerLinkActiveOptions]={exact:true} routerLinkActive = "activeUser">Profile</a>
           </li>
         </ul>
         <div class="navbar-header navbar-right">
           <ul class="nav navbar-nav">
             <li>
-              <a>Welcome John</a>
+              <a  *ngIf="!authenticationService.isAuthenticated()" [routerLink]="['/user/login']" [routerLinkActiveOptions]={exact:true} routerLinkActive = "activeUser">Login</a>
+              <a *ngIf="authenticationService.isAuthenticated()" [routerLink]="['/user/profile']" [routerLinkActiveOptions]={exact:true} routerLinkActive = "activeUser">Welcome {{authenticationService.getLoggedInUserDetails().firstName}}</a>
             </li>
           </ul>
         </div>
