@@ -11,9 +11,10 @@ import { ValidEventIdGuard } from './events/guard/valid-event-id.guard';
 import { EventNotFoundComponent } from './errors/event-not-found.component';
 import { CreateEventComponent } from './events/create/create-event.component';
 import { ExitCreateNewEventGuard } from './events/guard/exit-create-new-event.guard';
+import { EventsResolverService } from './events/events-resolver.service';
 
 const routes: Routes = [
-  { path: 'events', component: EventsListComponent },
+  { path: 'events', component: EventsListComponent , resolve:{events:EventsResolverService} },
   { path: 'events/new', canDeactivate:[ExitCreateNewEventGuard], component:CreateEventComponent },
   { path: 'events/:id', canActivate: [ValidEventIdGuard], component:EventDetailsComponent },
   {path:'eventNotFound', component : EventNotFoundComponent},

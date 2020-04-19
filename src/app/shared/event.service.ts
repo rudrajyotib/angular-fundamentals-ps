@@ -8,7 +8,7 @@ export class EventService {
 
   constructor() { }
 
-  getEvents()
+  getAsyncEvents()
   {
     let subject  : Subject<any>= new Subject();
     EVENTS.forEach((event, index, array) => {
@@ -19,9 +19,19 @@ export class EventService {
          if (array.length-1 === index){
            subject.complete();
          }
-      },1000*(index+1))
+      },10*(index+1))
     });
 
+    return subject;
+  }
+
+  getEvents()
+  {
+    let subject : Subject<any> = new Subject();
+    setTimeout(()=>{
+      subject.next(EVENTS);
+      subject.complete();
+    },100);
     return subject;
   }
 
