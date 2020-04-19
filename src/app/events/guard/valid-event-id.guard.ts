@@ -24,12 +24,12 @@ export class ValidEventIdGuard implements CanActivate {
       this.routerService.navigate(['/eventNotFound']);
       return false;
     }
-    let eventIndex : number = this.eventService.getEvents().findIndex(event => event.id === id)
-      if (eventIndex === -1)
-      {
-        this.routerService.navigate(['/eventNotFound']);
-        return false;
-      }
+    // let eventIndex : number = this.eventService.getEvents().findIndex(event => event.id === id)
+    //   if (eventIndex === -1)
+    //   {
+    //     this.routerService.navigate(['/eventNotFound']);
+    //     return false;
+    //   }
       return true;
   }
   
