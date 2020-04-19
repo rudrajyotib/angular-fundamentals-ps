@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'events/new', canDeactivate:[ExitCreateNewEventGuard], component:CreateEventComponent },
   { path: 'events/:id', canActivate: [ValidEventIdGuard], component:EventDetailsComponent },
   {path:'eventNotFound', component : EventNotFoundComponent},
+  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
   { path: '**', redirectTo: 'events', pathMatch: 'full' }
 ];
 

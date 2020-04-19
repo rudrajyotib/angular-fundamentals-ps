@@ -12,4 +12,9 @@ li > a.active
     color: chartreuse;
 }
 
+li > a.activeUser
+{
+    color: orange;
+}
+
 @media(max-width:1200px) {#searchForm{display: none;}}
