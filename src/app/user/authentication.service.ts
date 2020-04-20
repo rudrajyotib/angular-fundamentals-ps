@@ -6,7 +6,7 @@ import { User } from '../dataObjects/user-data-objects';
 })
 export class AuthenticationService {
 
-  public currentUser : User
+ currentUser : User
 
   constructor() { }
 
