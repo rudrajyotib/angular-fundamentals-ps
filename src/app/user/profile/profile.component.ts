@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
 
@@ -17,8 +17,10 @@ export class ProfileComponent implements OnInit {
     private router : Router) { }
 
   ngOnInit(): void {
-    let firstName = new FormControl(this.authenticationService.getLoggedInUserDetails().firstName);
-    let lastName = new FormControl(this.authenticationService.getLoggedInUserDetails().lastName);
+    let firstName = new FormControl(this.authenticationService.getLoggedInUserDetails().firstName,
+    [Validators.required, Validators.pattern('[a-zA-Z].*')]);
+    let lastName = new FormControl(this.authenticationService.getLoggedInUserDetails().lastName,
+    Validators.required);
     this.profileForm = new FormGroup(
       {
         firstName: firstName,
@@ -30,6 +32,10 @@ export class ProfileComponent implements OnInit {
 
   saveUpdate()
   {
+    if (!this.profileForm.valid)
+    {
+      return;
+    }
     this.authenticationService.updateUserDetails(
       this.profileForm.value.firstName,
       this.profileForm.value.lastName
