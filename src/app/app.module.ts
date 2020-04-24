@@ -10,7 +10,7 @@ import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { ValidEventIdGuard } from './events/guard/valid-event-id.guard';
 import { EventNotFoundComponent } from './errors/event-not-found.component';
-import { CreateEventComponent } from './events/create/create-event.component';
+import { CreateEventComponent } from './events/create-event/create-event.component';
 import { ExitCreateNewEventGuard } from './events/guard/exit-create-new-event.guard';
 import { EventsResolverService } from './events/events-resolver.service';
 
