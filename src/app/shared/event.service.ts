@@ -43,9 +43,16 @@ export class EventService {
 
   saveEvent(event)
   {
-    event.id=999;
+    var maxId = Math.max.apply(null, EVENTS.map(event => event.id));
+    event.id=maxId + 1;
     event.session=[];
     EVENTS.push(event);
+  }
+
+  updateEvent(updatedEvent : Event)
+  {
+    var index = EVENTS.findIndex(event => updatedEvent.id === event.id);
+    EVENTS[index]=updatedEvent;
   }
 }
 

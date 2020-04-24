@@ -14,6 +14,7 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
 import { ExitCreateNewEventGuard } from './events/guard/exit-create-new-event.guard';
 import { EventsResolverService } from './events/events-resolver.service';
 import { CreateSessionComponent } from './events/session/create-session/create-session.component';
+import { SessionListComponent } from './events/session/list-session/session-list.component';
 
 const routes: Routes = [
   { path: 'events', component: EventsListComponent , resolve:{events:EventsResolverService} },
@@ -35,7 +36,8 @@ const routes: Routes = [
     EventDetailsComponent,
     EventNotFoundComponent,
     CreateEventComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
   imports: [
     BrowserModule,
