@@ -1,0 +1,9 @@
+em{
+    color: red;
+    float:right;
+}
+
+.inputError
+{
+    border: red 1px solid;
+}

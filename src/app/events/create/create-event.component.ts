@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventService } from 'src/app/shared/event.service';
+import { ToastrService } from 'src/app/common/toastr.service';
 
 @Component({
   selector: 'CreateNewEvent',
@@ -9,13 +11,23 @@ import { Router } from '@angular/router';
 export class CreateEventComponent implements OnInit {
 
   isDirty : boolean = true;
+  newEvent;
 
-  constructor(private routerService : Router) { }
+  constructor(private routerService : Router, private eventService : EventService, 
+    private toaster : ToastrService) { }
 
   ngOnInit(): void {
   }
 
-  handleCancelOfCreateNewForm()
+  saveEvent(formValues)
+  {
+    this.eventService.saveEvent(formValues);
+    this.toaster.success('Success', 'new event '+formValues.name+' saved');
+    this.isDirty=false;
+    this.routerService.navigate(['/events']);
+  }
+
+  cancel()
   {
     this.routerService.navigate(['/events']);
   }
