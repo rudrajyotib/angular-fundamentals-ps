@@ -13,7 +13,7 @@ import { EventNotFoundComponent } from './errors/event-not-found.component';
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { ExitCreateNewEventGuard } from './events/guard/exit-create-new-event.guard';
 import { EventsResolverService } from './events/events-resolver.service';
-import { CreateSessionComponent } from './events/session/create-session.component';
+import { CreateSessionComponent } from './events/session/create-session/create-session.component';
 
 const routes: Routes = [
   { path: 'events', component: EventsListComponent , resolve:{events:EventsResolverService} },
