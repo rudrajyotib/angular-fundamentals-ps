@@ -13,10 +13,12 @@ import { EventNotFoundComponent } from './errors/event-not-found.component';
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { ExitCreateNewEventGuard } from './events/guard/exit-create-new-event.guard';
 import { EventsResolverService } from './events/events-resolver.service';
+import { CreateSessionComponent } from './events/session/create-session.component';
 
 const routes: Routes = [
   { path: 'events', component: EventsListComponent , resolve:{events:EventsResolverService} },
   { path: 'events/new', canDeactivate:[ExitCreateNewEventGuard], component:CreateEventComponent },
+  { path: 'events/session/new',  component:CreateSessionComponent },
   { path: 'events/:id', canActivate: [ValidEventIdGuard], component:EventDetailsComponent },
   {path:'eventNotFound', component : EventNotFoundComponent},
   { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
@@ -32,7 +34,8 @@ const routes: Routes = [
     NavBarComponent,
     EventDetailsComponent,
     EventNotFoundComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
