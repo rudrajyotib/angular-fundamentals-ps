@@ -38,7 +38,7 @@ export class EventDetailsComponent implements OnInit {
     {
       return;
     }
-    var maxId = Math.max.apply(null, this.event.sessions.map(session => session.id));
+    var maxId = Math.max.apply(null, this.event.sessions?.map(session => session.id));
     session.id = maxId+1;
     this.event.sessions.push(session);
   }

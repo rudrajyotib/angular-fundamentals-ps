@@ -15,6 +15,7 @@ import { ExitCreateNewEventGuard } from './events/guard/exit-create-new-event.gu
 import { EventsResolverService } from './events/events-resolver.service';
 import { CreateSessionComponent } from './events/session/create-session/create-session.component';
 import { SessionListComponent } from './events/session/list-session/session-list.component';
+import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
 
 const routes: Routes = [
   { path: 'events', component: EventsListComponent , resolve:{events:EventsResolverService} },
@@ -37,7 +38,8 @@ const routes: Routes = [
     EventNotFoundComponent,
     CreateEventComponent,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    CollapsibleWellComponent
   ],
   imports: [
     BrowserModule,

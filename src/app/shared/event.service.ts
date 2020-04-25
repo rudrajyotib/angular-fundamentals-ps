@@ -45,7 +45,7 @@ export class EventService {
   {
     var maxId = Math.max.apply(null, EVENTS.map(event => event.id));
     event.id=maxId + 1;
-    event.session=[];
+    event.sessions=[];
     EVENTS.push(event);
   }
 
