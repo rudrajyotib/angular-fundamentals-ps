@@ -11,6 +11,7 @@ export class SessionListComponent implements OnInit , OnChanges{
 
   @Input() sessions : Session[];
   @Input() filterBy : string;
+  @Input() sortBy : string;
 
   visibleSessions : Session[];
 
@@ -20,21 +21,39 @@ export class SessionListComponent implements OnInit , OnChanges{
   ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
     if (this.sessions)
     {
-      this.filterSessions(this.sessions, this.filterBy);
+      this.filterAndSortSessions(this.sessions, this.filterBy, this.sortBy);
     }
   }
 
-  filterSessions(allSessions : Session[], levelFilter : string) : void
+  filterAndSortSessions(allSessions : Session[], levelFilter : string, sortBy:string) : void
   {
+    let filteredAndSortedSessions :  Session[];
     if ('all' === levelFilter)
     {
-      this.visibleSessions =  allSessions.slice(0);
+      filteredAndSortedSessions =  allSessions.slice(0);
     }else
     {
-      this.visibleSessions = allSessions.filter(session => {
+      filteredAndSortedSessions = allSessions.filter(session => {
         return (session.level.toLocaleUpperCase() === levelFilter.toLocaleUpperCase());
       });
     }
+    if (sortBy && !("" === this.sortBy))
+    {
+      switch (sortBy.toUpperCase())
+      {
+        case 'VOTES': filteredAndSortedSessions.sort( (session1, session2) => {
+          return session1.voters?.length - session2.voters?.length;
+        });
+        break;
+        case 'NAME':filteredAndSortedSessions.sort((session1, session2)=>
+        {
+          return session1.name.localeCompare(session2.name);
+        });
+        break;
+        default: break;
+      }
+    }
+    this.visibleSessions = filteredAndSortedSessions;
   }
 
   ngOnInit(): void {
