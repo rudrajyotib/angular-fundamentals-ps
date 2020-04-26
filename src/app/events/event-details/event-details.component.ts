@@ -13,7 +13,7 @@ export class EventDetailsComponent implements OnInit {
 
   event : Event;
   addMode : boolean = false;
- 
+  filterBy : string = 'all';
 
   constructor(private eventService : EventService, 
     private activatedRoute : ActivatedRoute,
@@ -22,7 +22,6 @@ export class EventDetailsComponent implements OnInit {
   ngOnInit(): void {
   
     const id= this.activatedRoute.snapshot.paramMap.get('id');
-    console.log('loading event details for id::'+id);
     this.event = this.eventService.getEventDetails(Number(id));
   }
 

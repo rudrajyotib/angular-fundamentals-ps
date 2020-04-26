@@ -22,17 +22,22 @@
       </div>
     </div>
     <hr>
-      <div class="row">
-        <div class="col-md-2">
-          <h3 style="margin-bottom: 30px;">Sessions</h3>
+      <div class="row"> 
+        <div class="col-md-2" style="vertical-align: top;" >
+          <h4 >Sessions</h4>
         </div>
-        <div class="col-md-2">
-          <button class="btn btn-primary" [disabled]="addMode" (click)="addSession()"> Add Session</button>
-          <!-- <a (click)="addSession()">Add Session</a> -->
+        <div [hidden]="addMode" class="col-md-8">
+          <button class="btn btn-default" [class.active]="filterBy === 'all'" (click)="filterBy = 'all'">All</button>
+          <button class="btn btn-default" [class.active]="filterBy === 'beginner'" (click)="filterBy = 'beginner'">Beginner</button>
+          <button class="btn btn-default" [class.active]="filterBy === 'Intermediate'" (click)="filterBy = 'intermediate'">Intermediate</button>
+          <button class="btn btn-default" [class.active]="filterBy === 'advanced'" (click)="filterBy = 'advanced'">Advanced</button>
+        </div>
+        <div [hidden]="addMode" class="col-md-2">
+          <button class="btn btn-primary"   [disabled]="addMode" (click)="addSession()"> Add Session</button>
         </div>
       </div>
       <create-session *ngIf="addMode" (saveSessionEvent)="saveNewSession($event)"></create-session>
-      <session-list *ngIf="!addMode" [sessions]='event?.sessions'></session-list>
+      <session-list [filterBy]="filterBy" *ngIf="!addMode" [sessions]='event?.sessions'></session-list>
     <hr>
     <div class="row" *ngIf="!addMode"> 
         <div class="col-md-12">
