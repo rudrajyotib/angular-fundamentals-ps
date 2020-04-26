@@ -16,6 +16,7 @@ import { EventsResolverService } from './events/events-resolver.service';
 import { CreateSessionComponent } from './events/session/create-session/create-session.component';
 import { SessionListComponent } from './events/session/list-session/session-list.component';
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
+import { DurationPipe } from './shared/pipes/duration.pipe';
 
 const routes: Routes = [
   { path: 'events', component: EventsListComponent , resolve:{events:EventsResolverService} },
@@ -39,7 +40,8 @@ const routes: Routes = [
     CreateEventComponent,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,

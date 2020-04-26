@@ -1,6 +1,6 @@
 <div class = "well hoverwell thumbnail">
     <h2>{{eventData?.name}}</h2>
-    <div>{{eventData?.date}}</div>
+    <div>{{eventData?.date | date : 'd/M/y'}}</div>
     <div  [ngClass]="{green : eventData?.time === '8:00 am' ,
                 orange :  eventData?.time === '10:00 am'}" [ngSwitch]="eventData?.time">
         {{eventData?.time}}
@@ -8,7 +8,7 @@
         <span *ngSwitchCase="'10:00 am'">(Late start)</span>
         <span *ngSwitchDefault>(Normal start)</span>
     </div>
-    <div> ${{eventData?.price}}</div>
+    <div> {{eventData?.price | currency : 'USD'}}</div>
     <div *ngIf="eventData?.location">
         <span>Location :: {{eventData?.location?.address}}</span>
         <span class="pad-left"> {{eventData?.location?.city}},{{eventData?.location?.country}}</span>
