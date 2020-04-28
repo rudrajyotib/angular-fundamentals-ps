@@ -17,6 +17,9 @@ import { CreateSessionComponent } from './events/session/create-session/create-s
 import { SessionListComponent } from './events/session/list-session/session-list.component';
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
 import { DurationPipe } from './shared/pipes/duration.pipe';
+import { ToastrService, TOASTR_TOKEN } from './common/toastr.service';
+
+let toastr : ToastrService = window['toastr'];
 
 const routes: Routes = [
   { path: 'events', component: EventsListComponent , resolve:{events:EventsResolverService} },
@@ -27,6 +30,7 @@ const routes: Routes = [
   { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
   { path: '**', redirectTo: 'events', pathMatch: 'full' }
 ];
+
 
 
 @NgModule({
@@ -49,7 +53,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    { provide : TOASTR_TOKEN , useValue : toastr}
+  ],
   bootstrap: [EventsAppComponent]
 })
 export class AppModule { }

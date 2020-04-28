@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { EventService } from '../shared/event.service';
-import { ToastrService } from '../common/toastr.service';
+import { ToastrService, TOASTR_TOKEN } from '../common/toastr.service';
 import { ActivatedRoute } from '@angular/router';
 import { Event } from '../dataObjects/event-data-objects';
 
@@ -16,7 +16,7 @@ export class EventsListComponent implements OnInit
     events : Event[];
 
     constructor(private eventService : EventService,
-        private toastrService : ToastrService,
+        @Inject(TOASTR_TOKEN) private toastrService : ToastrService,
         private route : ActivatedRoute)
     {
         this.events = [];

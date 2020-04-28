@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from 'src/app/shared/event.service';
-import { ToastrService } from 'src/app/common/toastr.service';
+import { ToastrService, TOASTR_TOKEN } from 'src/app/common/toastr.service';
 
 @Component({
   selector: 'CreateNewEvent',
@@ -14,7 +14,7 @@ export class CreateEventComponent implements OnInit {
   newEvent;
 
   constructor(private routerService : Router, private eventService : EventService, 
-    private toaster : ToastrService) { }
+    @Inject(TOASTR_TOKEN) private toaster : ToastrService) { }
 
   ngOnInit(): void {
   }
