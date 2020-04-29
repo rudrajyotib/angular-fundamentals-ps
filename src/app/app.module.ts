@@ -18,8 +18,10 @@ import { SessionListComponent } from './events/session/list-session/session-list
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
 import { DurationPipe } from './shared/pipes/duration.pipe';
 import { ToastrService, TOASTR_TOKEN } from './common/toastr.service';
+import { JQUERY_TOKEN } from './common/jQuery.service';
 
 let toastr : ToastrService = window['toastr'];
+let jQuery : Object = window['$'];
 
 const routes: Routes = [
   { path: 'events', component: EventsListComponent , resolve:{events:EventsResolverService} },
@@ -54,7 +56,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    { provide : TOASTR_TOKEN , useValue : toastr}
+    { provide : TOASTR_TOKEN , useValue : toastr},
+    {provide : JQUERY_TOKEN, useValue : jQuery}
   ],
   bootstrap: [EventsAppComponent]
 })
