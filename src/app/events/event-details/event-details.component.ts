@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EventService } from 'src/app/shared/event.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { stringify } from 'querystring';
 import { Event, Session } from 'src/app/dataObjects/event-data-objects';
 
@@ -22,8 +22,13 @@ export class EventDetailsComponent implements OnInit {
 
   ngOnInit(): void {
   
-    const id= this.activatedRoute.snapshot.paramMap.get('id');
-    this.event = this.eventService.getEventDetails(Number(id));
+    this.activatedRoute.params.forEach((params : Params) => {
+      this.event = this.eventService.getEventDetails(Number(params['id']));
+      this.addMode = false;
+      this.sortBy = '';
+      this.filterBy = 'all';
+    });
+
   }
 
   handleBackButton()

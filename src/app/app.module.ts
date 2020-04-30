@@ -19,6 +19,8 @@ import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-
 import { DurationPipe } from './shared/pipes/duration.pipe';
 import { ToastrService, TOASTR_TOKEN } from './common/toastr.service';
 import { JQUERY_TOKEN } from './common/jQuery.service';
+import { SimpleModalComponent } from './common/modals/simple-modal/simple-modal.component';
+import { ModalTriggerDirective } from './common/modals/directives/modal-trigger.directive';
 
 let toastr : ToastrService = window['toastr'];
 let jQuery : Object = window['$'];
@@ -47,7 +49,9 @@ const routes: Routes = [
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [
     BrowserModule,
